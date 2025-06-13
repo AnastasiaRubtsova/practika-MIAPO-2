@@ -6,14 +6,25 @@
 </head>
 <body>
     <h1>Список продуктов</h1>
+
+    @if(session('success'))
+        <div style="color: green;">{{ session('success') }}</div>
+    @endif
+
     <a href="{{ route('products.create') }}">Добавить продукт</a>
-    <ul>
-        @foreach ($products as $product)
-            <li>
-                <strong>{{ $product->name }}</strong>: {{ $product->detail }}
-            </li>
-        @endforeach
-    </ul>
+
+    @if($products->isEmpty())
+        <p>Нет продуктов для отображения.</p>
+    @else
+        <ul>
+            @foreach ($products as $product)
+                <li>
+                    <strong>{{ $product->name }}</strong>: {{ $product->detail }}
+                    <a href="{{ route('products.edit', $product->id) }}">Редактировать</a>
+                </li>
+            @endforeach
+        </ul>
+    @endif
+
 </body>
 </html>
-
