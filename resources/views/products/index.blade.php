@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Products</title>
+    <title>Список продуктов</title>
 </head>
 <body>
     <h1>Список продуктов</h1>
@@ -10,15 +10,10 @@
     <ul>
         @foreach ($products as $product)
             <li>
-                {{ $product->name }} - {{ $product->detail }}
-                <a href="{{ route('products.edit', $product->id) }}">Редактировать</a>
-                <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Удалить</button>
-                </form>
+                <strong>{{ $product->name }}</strong>: {{ $product->detail }}
             </li>
         @endforeach
     </ul>
 </body>
 </html>
+

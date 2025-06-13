@@ -27,4 +27,10 @@ class ProductController extends Controller
         return redirect()->route('products.create')
             ->with('success','Product created successfully.');
     }
+
+    public function index()
+    {
+        $products = \App\Models\Product::all();
+        return view('products.index', compact('products'));
+    }
 }
