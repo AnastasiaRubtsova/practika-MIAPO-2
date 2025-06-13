@@ -27,4 +27,27 @@ class ProductController extends Controller
         return redirect()->route('products.create')
             ->with('success','Product created successfully.');
     }
+
+    public function index()
+    {
+        $products = \App\Models\Product::all();
+        return view('products.index', compact('products'));
+    }
+
+    public function edit(\App\Models\Product $product)
+    {
+        return view('products.edit', compact('product'));
+    }
+
+    public function update(Request $request, \App\Models\Product $product)
+    {
+        $request->validate([
+            'name' => 'required',
+            'detail' => 'required',
+        ]);
+        $product->update($request->all());
+        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+    }
+
+    
 }
