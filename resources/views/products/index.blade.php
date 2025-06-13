@@ -21,6 +21,12 @@
                 <li>
                     <strong>{{ $product->name }}</strong>: {{ $product->detail }}
                     <a href="{{ route('products.edit', $product->id) }}">Редактировать</a>
+                    
+                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Удалить продукт?')">Удалить</button>
+                    </form>
                 </li>
             @endforeach
         </ul>
