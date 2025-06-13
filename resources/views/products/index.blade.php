@@ -11,6 +11,7 @@
         @foreach ($products as $product)
             <li>
                 {{ $product->name }} - {{ $product->detail }}
+                <a href="{{ route('products.show', $product->id) }}">Подробнее</a>
                 <a href="{{ route('products.edit', $product->id) }}">Редактировать</a>
                 <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline">
                     @csrf
