@@ -1,4 +1,3 @@
-<!-- resources/views/products/index.blade.php -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +24,7 @@
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Удалить</button>
+                        <button type="submit" onclick="return confirm('Удалить продукт?')">Удалить</button>
                     </form>
                 </li>
             @endforeach
